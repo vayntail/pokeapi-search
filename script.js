@@ -1,5 +1,6 @@
 const searchButtonEl = document.getElementById("search-button");
 const searchInputEl = document.getElementById("search-input");
+const searchResultsEl = document.getElementById("search-results-list");
 
 let allPokemons = [];
 async function fetchAllPokemons() {
@@ -29,10 +30,17 @@ async function fetchData(url) {
 }
 
 searchInputEl.addEventListener("input", () => {
+    searchResultsEl.innerHTML = "";
     let results = [];
     let userInput = searchInputEl.value;
     results = allPokemons.filter(value => {
-        return value.name.slice(0,userInput.length) == searchInputEl.value;
+        if (value.name.slice(0,userInput.length) == searchInputEl.value) {
+            const li = document.createElement("li");
+            li.textContent = value.name;
+            li.classList.add("search-result-item");
+            searchResultsEl.append(li);
+            return value;
+        }
     })
     console.log(results);
 })

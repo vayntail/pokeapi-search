@@ -8,15 +8,26 @@ body {
     display: flex;
     justify-content: center;
 }
+
+button {
+    height: fit-content;
+}
+
+#search-wrapper {
+    display: flex;
+}
+
 ul {
+    list-style-type: none;
     border-top: 1px solid gray;
     border-right: 1px solid gray;
     border-left: 1px solid gray;
-    
+    overflow-y: scroll;
+    max-height: 250px;
 }
-#search-results-list {
-    list-style-type: none;
-    li {
-        border-bottom: 1px solid gray;
-    }
+
+.search-result-item {
+    height: 50px;
+    border-bottom: 1px solid gray;
+    display: flex;
 }
