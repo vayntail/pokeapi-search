@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+ul {
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    
+}
+#search-results-list {
+    list-style-type: none;
+    li {
+        border-bottom: 1px solid gray;
+    }
+}
