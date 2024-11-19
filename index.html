@@ -9,22 +9,31 @@
     <script defer type="module" src="/index.js"></script>
   </head>
   <body>
-    <div id="search-wrapper">
-      <div id="searchbar">
-        <input id="search-input" type="text" />
-        <button id="search-button">Search</button>
+    <div class="search-div">
+      <div class="search-wrapper">
+        <div class="searchbar">
+          <input class="search-input" type="text" />
+          <button class="search-button">Search</button>
+        </div>
+        <ul class="search-results-list"></ul>
       </div>
-      <ul id="search-results-list">
-        <li class="search-result-item hidden" id="item">
-          <img src="" />
-          <h1 id="name">test</h1>
-        </li>
-      </ul>
     </div>
 
     <div id="display-info">
-      <h1></h1>
-      <img id="picture" src="" />
+      <h1>Pikachu #0025</h1>
+      <img
+        id="picture"
+        src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png"
+      />
+      <div class="flex">
+        <p>type: Electric</p>
+        <p>weaknesses: Ground</p>
+      </div>
+      <p>
+        When it is angered, it immediately discharges the energy stored in the
+        pouches in its cheeks.
+      </p>
+      <div id="stats"></div>
     </div>
   </body>
 </html>

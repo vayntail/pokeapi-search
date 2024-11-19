@@ -1,8 +1,9 @@
 import * as Api from "./api.js";
 
-const searchButtonEl = document.getElementById("search-button");
-const searchInputEl = document.getElementById("search-input");
-const searchResultsEl = document.getElementById("search-results-list");
+const searchButtonEl = document.querySelector(".search-button");
+const searchInputEl = document.querySelector(".search-input");
+const searchResultsEl = document.querySelector(".search-results-list");
+const displayInfoEl = document.querySelector("#display-info");
 
 Api.fetchAllPokemons();
 
@@ -47,7 +48,7 @@ async function createSearchResultItem(value) {
       img.src = data.sprites.front_default; // Change to the real image after loading
     };
 
-    const name = document.createElement("h1");
+    const name = document.createElement("p");
     name.id = "name";
     name.textContent = value.name;
 
@@ -57,6 +58,11 @@ async function createSearchResultItem(value) {
 
     // add to list
     searchResultsEl.append(li);
+
+    li.addEventListener("click", () => {
+      displayInfoEl.style.display = "flex";
+      console.log(data);
+    });
   } else {
     throw Error(`Failed to fetch data for ${value.name}`);
   }

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
+:root {
+  --border-color: rgb(172, 191, 240);
+  --border-px: 2px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,36 +12,53 @@
 
 html,
 body {
+  font-family: "Nunito", serif;
   width: 100%;
   height: 100%;
 }
 
+h1 {
+  font-weight: 400;
+}
+
 body {
-  font-family: "Nunito", serif;
   display: flex;
+  flex-direction: column;
+}
+.search-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: aliceblue;
 }
 
-#searchbar {
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.137);
+.search-wrapper {
+  max-width: 500px;
+  min-width: 300px;
+  width: 80%;
+  position: relative;
+}
+.searchbar {
+  width: 100%;
   display: flex;
 
-  #search-input {
+  .search-input {
+    flex: 1;
     font-size: 18px;
-    border: 1px solid black;
+    border: var(--border-px) solid var(--border-color);
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    width: 300px;
+
     padding: 8px;
   }
 
-  #search-button {
+  .search-button {
     min-height: 100%;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-right: var(--border-px) solid var(--border-color);
+    border-top: var(--border-px) solid var(--border-color);
+    border-bottom: var(--border-px) solid var(--border-color);
     border-left: none;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -45,9 +66,11 @@ body {
   }
 }
 
-#search-results-list {
+.search-results-list {
+  width: 100%;
+  position: absolute;
   list-style-type: none;
-  border-top: 1px solid gray;
+
   border-right: 1px solid gray;
   border-left: 1px solid gray;
   overflow-y: scroll;
@@ -62,6 +85,15 @@ body {
   cursor: pointer;
 }
 
-.hidden {
+#display-info {
+  flex: 5;
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  gap: 20px;
+  display: flex;
 }
