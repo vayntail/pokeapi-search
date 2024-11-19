@@ -4,12 +4,9 @@ const searchButtonEl = document.querySelector(".search-button");
 const searchInputEl = document.querySelector(".search-input");
 const searchResultsEl = document.querySelector(".search-results-list");
 const displayInfoEl = document.querySelector("#display-info");
+const x = document.querySelector("#clone-sprite-item");
 
 Api.fetchAllPokemons();
-
-function displayData(data) {
-  console.log(data);
-}
 
 function handleSearchResults() {
   searchResultsEl.innerHTML = "";
@@ -59,24 +56,46 @@ async function createSearchResultItem(value) {
     // add to list
     searchResultsEl.append(li);
 
+    // if any are clicked, display the data
     li.addEventListener("click", () => {
+      console.log("clicked");
       displayInfoEl.style.display = "flex";
-      console.log(data);
+      displayData(data);
     });
   } else {
     throw Error(`Failed to fetch data for ${value.name}`);
   }
+}
 
-  //   li.innerHTML = `<img src="${data.sprites.front_default}" />
-  //           <p id="name">${value.name}</p>`;
-  //   li.classList.add("search-result-item");
+function displayData(data) {
+  searchResultsEl.innerHTML = "";
+  displayInfoEl.querySelector("#sprites-grid").innerHTML = "";
+  displayInfoEl.querySelector("h1").innerText = data.name;
+  displayInfoEl.querySelector("img").src =
+    data.sprites.other["official-artwork"].front_default;
+  console.log(data);
 
-  //   // add to list
-  //   searchResultsEl.append(li);
+  Object.entries(data.sprites).forEach(([key, value]) => {
+    if (value != null && typeof value == "string") {
+      console.log(key);
+
+      let h = x.cloneNode(true);
+      h.style.display = "block";
+      h.querySelector("h2").innerText = key;
+      h.querySelector("img").src = value;
+      displayInfoEl.querySelector("#sprites-grid").append(h);
+    }
+  });
 }
 
 // Events
 searchInputEl.addEventListener("input", () => handleSearchResults());
+searchInputEl.addEventListener("focusin", () => handleSearchResults());
+searchInputEl.addEventListener("focusout", (event) => {
+  // console.log("focus out");
+  // searchResultsEl.innerHTML = "";
+});
+
 searchButtonEl.addEventListener("click", () => {
   Api.fetchPokemonByName(searchInputEl.value);
 });
